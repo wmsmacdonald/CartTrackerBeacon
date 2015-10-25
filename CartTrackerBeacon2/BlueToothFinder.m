@@ -32,7 +32,8 @@
      advertisementData:(NSDictionary<NSString *,
                         id> *)advertisementData
                   RSSI:(NSNumber *)RSSI {
-    NSLog(@"RSSI = %@, uuid = %@", RSSI, peripheral.identifier.UUIDString);
+    //NSLog(@"RSSI = %@, uuid = %@", RSSI, peripheral.identifier.UUIDString);
+    NSLog(@"RSSI = %@, uuid = %@", RSSI, ((CBService*)peripheral.services[0]).UUID.UUIDString);
 }
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
@@ -41,7 +42,7 @@
     if (central.state == CBCentralManagerStatePoweredOn) {
         NSLog(@"CBCentralManagerStatePoweredOn");
         //[_cbManager scanForPeripheralsWithServices:nil options:nil];
-        [_cbManager scanForPeripheralsWithServices:nil options:@{CBCentralManagerScanOptionAllowDuplicatesKey : @YES}];
+        [_cbManager scanForPeripheralsWithServices:nil options:@{CBCentralManagerScanOptionAllowDuplicatesKey : @NO}];
     }
 }
 
