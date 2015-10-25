@@ -32,13 +32,14 @@
      advertisementData:(NSDictionary<NSString *,
                         id> *)advertisementData
                   RSSI:(NSNumber *)RSSI {
-    NSLog(@"RSSI = %@", RSSI);
+    NSLog(@"RSSI = %@, uuid = %@", RSSI, peripheral.identifier.UUIDString);
 }
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
     NSLog(@"centralManagerDidUpdateState state = %ld", (long)central.state);
     
     if (central.state == CBCentralManagerStatePoweredOn) {
+        NSLog(@"CBCentralManagerStatePoweredOn");
         [_cbManager scanForPeripheralsWithServices:nil options:nil];
     }
 }
