@@ -64,7 +64,7 @@
     if (central.state == CBCentralManagerStatePoweredOn) {
         NSLog(@"CBCentralManagerStatePoweredOn");
         //[_cbManager scanForPeripheralsWithServices:nil options:nil];
-        [_cbManager scanForPeripheralsWithServices:nil options:@{CBCentralManagerScanOptionAllowDuplicatesKey : @NO}];
+        [_cbManager scanForPeripheralsWithServices:nil options:@{CBCentralManagerScanOptionAllowDuplicatesKey : @YES}];
     }
 }
 
