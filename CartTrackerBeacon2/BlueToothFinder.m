@@ -33,7 +33,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     [self performBlockInBackground:^{
-        NSError *error = [[NSError alloc] init];
+        NSError *error = nil;
         NSHTTPURLResponse *responseCode = nil;
         [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
         if([responseCode statusCode] != 200){
