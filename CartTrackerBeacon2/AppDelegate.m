@@ -11,6 +11,8 @@
 
 @interface AppDelegate ()
 
+@property (nonatomic, strong) BlueToothFinder *central;
+
 @end
 
 @implementation AppDelegate
@@ -18,8 +20,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
     
-    BlueToothFinder *b = [[BlueToothFinder alloc] init];
-    [b go];
+    _central = [[BlueToothFinder alloc] init];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

@@ -10,6 +10,4 @@
 
 @interface BlueToothFinder : NSObject
 
-- (void)go;
-
 @end

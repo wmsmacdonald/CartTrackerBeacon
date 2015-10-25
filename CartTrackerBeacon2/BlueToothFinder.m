@@ -25,11 +25,6 @@
     return self;
 }
 
-- (void)go {
-    NSLog(@"go");
-    [_cbManager scanForPeripheralsWithServices:nil options:nil];
-}
-
 #pragma mark - CBCentralManagerDelegate
 
 - (void)centralManager:(CBCentralManager *)central
@@ -42,6 +37,10 @@
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
     NSLog(@"centralManagerDidUpdateState state = %ld", (long)central.state);
+    
+    if (central.state == CBCentralManagerStatePoweredOn) {
+        [_cbManager scanForPeripheralsWithServices:nil options:nil];
+    }
 }
 
 @end
