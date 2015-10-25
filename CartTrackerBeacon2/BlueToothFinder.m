@@ -29,14 +29,15 @@
 - (void)sendUrlGetRssi:(int)rssi uuid:(NSString*)uuid {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://quotacle.com:3000/api?beaconid=%d&uuid=%@&signalstrength=%d", 0, uuid, rssi]]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://quotacle.com:3000/api?beaconid=%d&uuid=%@&signalstrength=%d", 0, uuid, rssi]];
+    [request setURL:url];
     
     [self performBlockInBackground:^{
         NSError *error = [[NSError alloc] init];
         NSHTTPURLResponse *responseCode = nil;
         [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
         if([responseCode statusCode] != 200){
-            NSLog(@"Error getting %@, HTTP status code %ld", [NSURL URLWithString:@"quotacle.com:8000"], (long)[responseCode statusCode]);
+            NSLog(@"Error getting %@, HTTP status code %ld", url, (long)[responseCode statusCode]);
         }
     }];
 }
