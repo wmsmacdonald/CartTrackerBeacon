@@ -27,10 +27,10 @@
 }
 
 - (void)sendUrlGetRssi:(int)rssi uuid:(NSString*)uuid {
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setHTTPMethod:@"GET"];
+    //NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    //[request setHTTPMethod:@"GET"];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://quotacle.com:3000/api?beaconid=%d&uuid=%@&signalstrength=%d", 0, uuid, rssi]];
-    [request setURL:url];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     [self performBlockInBackground:^{
         NSError *error = [[NSError alloc] init];
