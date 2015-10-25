@@ -13,6 +13,7 @@
 @interface BlueToothFinder () <CBCentralManagerDelegate>
 
 @property (nonatomic, strong) CBCentralManager *cbManager;
+@property (nonatomic, strong) NSDate *lastDate;
 
 @end
 
@@ -29,6 +30,14 @@
 - (void)sendUrlGetRssi:(int)rssi uuid:(NSString*)uuid {
     //NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     //[request setHTTPMethod:@"GET"];
+    
+    NSDate *now = [NSDate date];
+    if (_lastDate != nil) {
+        NSTimeInterval since = [now timeIntervalSinceDate:_lastDate];
+        if (since < 1.0) return;
+    }
+    _lastDate = now;
+    
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://quotacle.com:3000/api?beaconid=%d&uuid=%@&signalstrength=%d", 0, uuid, rssi]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
