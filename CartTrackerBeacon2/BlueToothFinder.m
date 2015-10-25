@@ -32,8 +32,7 @@
      advertisementData:(NSDictionary<NSString *,
                         id> *)advertisementData
                   RSSI:(NSNumber *)RSSI {
-    //NSLog(@"RSSI = %@, uuid = %@", RSSI, peripheral.identifier.UUIDString);
-    NSLog(@"RSSI = %@, uuid = %@", RSSI, ((CBService*)peripheral.services[0]).UUID.UUIDString);
+    NSLog(@"RSSI = %@, uuid = %@", RSSI, peripheral.identifier.UUIDString);
 }
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
