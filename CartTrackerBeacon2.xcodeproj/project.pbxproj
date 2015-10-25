@@ -13,6 +13,7 @@
 		9BB7A9ED1BDC933700872660 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB7A9EC1BDC933700872660 /* Assets.xcassets */; };
 		9BB7A9F01BDC933700872660 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB7A9EE1BDC933700872660 /* Main.storyboard */; };
 		9BB7A9F91BDC938300872660 /* BlueToothFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB7A9F71BDC938300872660 /* BlueToothFinder.m */; settings = {ASSET_TAGS = (); }; };
+		9BB7A9FC1BDCF42800872660 /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB7A9FA1BDCF42800872660 /* NSObject+PerformBlock.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,8 @@
 		9BB7A9F11BDC933700872660 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BB7A9F71BDC938300872660 /* BlueToothFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueToothFinder.m; sourceTree = "<group>"; };
 		9BB7A9F81BDC938300872660 /* BlueToothFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueToothFinder.h; sourceTree = "<group>"; };
+		9BB7A9FA1BDCF42800872660 /* NSObject+PerformBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PerformBlock.m"; sourceTree = "<group>"; };
+		9BB7A9FB1BDCF42800872660 /* NSObject+PerformBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PerformBlock.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +62,8 @@
 		9BB7A9E21BDC933700872660 /* CartTrackerBeacon2 */ = {
 			isa = PBXGroup;
 			children = (
+				9BB7A9FA1BDCF42800872660 /* NSObject+PerformBlock.m */,
+				9BB7A9FB1BDCF42800872660 /* NSObject+PerformBlock.h */,
 				9BB7A9F71BDC938300872660 /* BlueToothFinder.m */,
 				9BB7A9F81BDC938300872660 /* BlueToothFinder.h */,
 				9BB7A9E31BDC933700872660 /* AppDelegate.h */,
@@ -151,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BB7A9EB1BDC933700872660 /* ViewController.m in Sources */,
+				9BB7A9FC1BDCF42800872660 /* NSObject+PerformBlock.m in Sources */,
 				9BB7A9E81BDC933700872660 /* main.m in Sources */,
 				9BB7A9F91BDC938300872660 /* BlueToothFinder.m in Sources */,
 				9BB7A9E51BDC933700872660 /* AppDelegate.m in Sources */,

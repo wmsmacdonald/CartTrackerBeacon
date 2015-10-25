@@ -8,6 +8,7 @@
 
 @import CoreBluetooth;
 #import "BlueToothFinder.h"
+#import "NSObject+PerformBlock.h"
 
 @interface BlueToothFinder () <CBCentralManagerDelegate>
 
@@ -25,6 +26,21 @@
     return self;
 }
 
+- (void)sendUrlGetRssi:(int)rssi uuid:(NSString*)uuid {
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setHTTPMethod:@"GET"];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://quotacle.com:3000/api?beaconid=%d&uuid=%@&signalstrength=%d", 0, uuid, rssi]]];
+    
+    [self performBlockInBackground:^{
+        NSError *error = [[NSError alloc] init];
+        NSHTTPURLResponse *responseCode = nil;
+        [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+        if([responseCode statusCode] != 200){
+            NSLog(@"Error getting %@, HTTP status code %ld", [NSURL URLWithString:@"quotacle.com:8000"], (long)[responseCode statusCode]);
+        }
+    }];
+}
+
 #pragma mark - CBCentralManagerDelegate
 
 - (void)centralManager:(CBCentralManager *)central
@@ -34,8 +50,11 @@
                   RSSI:(NSNumber *)RSSI {
     if ([advertisementData[CBAdvertisementDataLocalNameKey] isEqualToString:@"cart_tracker"]) {
         NSLog(@"cart_tracker");
+        NSLog(@"RSSI = %@, uuid = %@", RSSI, peripheral.identifier.UUIDString);
+        
+        [self sendUrlGetRssi:RSSI.intValue uuid:peripheral.identifier.UUIDString];
     }
-    NSLog(@"RSSI = %@, uuid = %@", RSSI, peripheral.identifier.UUIDString);
+    
 }
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
