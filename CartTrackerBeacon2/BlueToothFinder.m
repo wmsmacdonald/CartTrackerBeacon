@@ -32,6 +32,9 @@
      advertisementData:(NSDictionary<NSString *,
                         id> *)advertisementData
                   RSSI:(NSNumber *)RSSI {
+    if ([advertisementData[CBAdvertisementDataLocalNameKey] isEqualToString:@"cart_tracker"]) {
+        NSLog(@"cart_tracker");
+    }
     NSLog(@"RSSI = %@, uuid = %@", RSSI, peripheral.identifier.UUIDString);
 }
 
